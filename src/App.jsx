@@ -8,45 +8,51 @@ function App() {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const handleGenerate = (data) => {
-    // Simulate API Call for Image Generation
     setIsGenerating(true);
-    setGeneratedData(data); // Pre-fill data to show generating state properly if needed
+    // Visual feedback for generation
+    setGeneratedData(data); 
     
     setTimeout(() => {
       setIsGenerating(false);
-    }, 3500); // 3.5 seconds fake delay
+    }, 4500); 
   };
 
   return (
-    <div className="flex h-screen bg-[#f3f4f6] font-sans overflow-hidden">
-      {/* Sidebar Navigation */}
+    <div className="flex h-screen bg-[#f8fafc] text-slate-900 font-sans overflow-hidden">
+      {/* Sidebar Navigation - Fixed */}
       <Sidebar />
 
       {/* Main Content Area */}
-      <main className="flex-1 overflow-y-auto w-full h-full p-8 xl:p-12 transition-all">
-        <div className="max-w-7xl mx-auto flex flex-col xl:flex-row gap-12">
-          
-          {/* Left Column: Form */}
-          <div className="flex-1 max-w-3xl">
-            <GenerateForm onGenerate={handleGenerate} />
-          </div>
+      <main className="flex-1 overflow-y-auto w-full h-full relative selection:bg-purple-100">
+        {/* Background decorative elements */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100/30 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-indigo-100/30 rounded-full blur-[100px] -z-10 -translate-x-1/4 translate-y-1/4"></div>
 
-          {/* Right Column: Preview & Results */}
-          <div className="flex-1 xl:max-w-2xl pt-14">
-            {isGenerating || generatedData ? (
-              <PreviewCanvas formData={generatedData} isGenerating={isGenerating} />
-            ) : (
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-12 flex flex-col items-center justify-center min-h-[500px] border-dashed">
-                <div className="w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center mb-6">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                </div>
-                <h3 className="text-xl font-medium text-gray-900 mb-2">Ready to create magic</h3>
-                <p className="text-gray-500 text-center">Fill out your brand details on the left and click Generate to see your AI-powered posts.</p>
-              </div>
-            )}
+        <div className="max-w-[1600px] mx-auto p-12 xl:p-16">
+          <div className="flex flex-col xl:flex-row gap-16 items-start">
+            
+            {/* Left Column: Form Configuration */}
+            <div className="w-full xl:w-[600px] shrink-0">
+              <GenerateForm onGenerate={handleGenerate} />
+            </div>
+
+            {/* Right Column: Dynamic Preview Display */}
+            <div className="w-full flex-1 min-h-[700px]">
+                <PreviewCanvas formData={generatedData} isGenerating={isGenerating} />
+            </div>
           </div>
-          
         </div>
+
+        {/* Support Footer */}
+        <footer className="px-12 pb-8 text-slate-400 font-medium text-xs flex gap-6 items-center">
+            <span className="hover:text-slate-600 cursor-pointer transition-colors">Documentation</span>
+            <span className="hover:text-slate-600 cursor-pointer transition-colors">API Reference</span>
+            <span className="hover:text-slate-600 cursor-pointer transition-colors">Support</span>
+            <div className="ml-auto flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                All systems operational
+            </div>
+        </footer>
       </main>
     </div>
   );
