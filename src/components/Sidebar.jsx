@@ -74,13 +74,13 @@ const Sidebar = () => {
         <div className="p-4 bg-white border border-slate-100 rounded-2xl flex items-center gap-3">
           <div className="relative">
             <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-slate-200 to-slate-300 flex items-center justify-center text-slate-600 font-bold overflow-hidden border-2 border-white ring-1 ring-slate-100">
-                <img src="https://ui-avatars.com/api/?name=Francisco&background=8b5cf6&color=fff" alt="User" />
+            <img src="https://ui-avatars.com/api/?name=User&background=8b5cf6&color=fff" alt="User" />
             </div>
             <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-bold text-slate-900 truncate">Francisco</p>
-            <p className="text-[10px] font-medium text-slate-400 truncate tracking-tight">bunkercreativomx@gmail.com</p>
+            <p className="text-sm font-bold text-slate-900 truncate">Account Manager</p>
+            <p className="text-[10px] font-medium text-slate-400 truncate tracking-tight">workspace@postai.app</p>
           </div>
           <button className="text-slate-400 hover:text-slate-600 transition-colors">
             <Settings size={18} />
